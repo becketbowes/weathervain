@@ -1,17 +1,30 @@
-var placeSearchName = document.querySelector("textarea").textContent;
+var whereInTheWorld = function(param) {
+    var theAsk = ("https://maps.googleapis.com/maps/api/geocode/json?address=" + param + "&key=AIzaSyDWtVKZCyc6X5L_eERu0Bk_WpclnefusjU")
+    fetch(theAsk)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            console.log(data)
+        });
+};
 
-// var whereInTheWorld = function {
 
-//     varGoogleLiteralSearch = https://maps.googleapis.com/maps/api/geocode/json?
-// }
+document.getElementById("btn").addEventListener("click", function() {
+    var placeSearchName = document.getElementById("textarea").value;
+    const words = placeSearchName.split(' ');
+    if (words.length>1) {
+        const string = (words[0] + "_" + words[1]);
+        whereInTheWorld(string);
+    } else {
+        whereInTheWorld(placeSearchName);
+    };
+});
+
 
 // var lookOutTheWindow = function() {
 
 // }
-
-addEventListener("click", function() {
-    console.log(placeSearchName);
-});
 
 // whereInTheWorld(text))
 // google locator api key : AIzaSyDWtVKZCyc6X5L_eERu0Bk_WpclnefusjU
