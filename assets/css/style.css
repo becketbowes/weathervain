@@ -1,0 +1,97 @@
+:root {
+    --txt:'Ubuntu Mono', monospace;
+}
+
+body{
+    font-family: "Ubuntu Mono", sans-serif;
+}
+
+header {
+    opacity: 0.5;
+    background-image: url(../img/WVheader.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 200px;
+    align-content: center;
+}
+
+header h1 {
+    text-align: center;
+    font-family: "Ubuntu Mono", sans-serif, bold;
+    color: rgb(15, 9, 49);
+    font-weight: bold;
+    font-size: 100px;
+}
+
+div {
+    margin: 10px
+    font-family: var(--txt);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap
+}   
+
+nav {
+    font-family: var(--txt);
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+nav p {
+    font-weight: bold;
+}
+
+nav textarea {
+    width: 100%;
+}
+
+nav button {
+    width: 100%;
+    border: none;
+}
+
+section {
+    font-family: var(--txt);
+    padding: 20px;
+    background-image: url(../img/sunny_coGiphy.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex-grow: 5;
+}
+
+section div {
+    height: 600px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+article {
+    background-image: url(../img/WVrainwind.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 200px;
+    height: 123px;
+    color: white;
+    outline: pink;
+}
+
+.sun {
+    background-image: url(../img/sunny_coGiphy.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.wind {
+    background-image: url(../img/WVrainwind.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
