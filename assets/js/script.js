@@ -5,8 +5,8 @@ var whereInTheWorld = function(param) {
             return response.json();
         })
         .then(function(data) {
-            console.log(data.results[0].address_components[0].main.long_name);
-            console.log(data.results[0].address_components[1].main.short_name);
+            console.log(data.results[0].address_components[0].long_name);
+            console.log(data.results[0].address_components[2].short_name);
             console.log(data.results[0].geometry.location);
         });
 };
