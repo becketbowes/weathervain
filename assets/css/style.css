@@ -14,12 +14,13 @@ header {
     background-size: cover;
     height: 200px;
     align-content: center;
+    padding: 30px 0 0 0;
 }
 
 header h1 {
     text-align: center;
     font-family: "Ubuntu Mono", sans-serif, bold;
-    color: rgb(15, 9, 49);
+    color: rgb(255, 110, 212);
     font-weight: bold;
     font-size: 100px;
 }
@@ -50,6 +51,7 @@ nav textarea {
 
 nav button {
     width: 100%;
+    height: 50px;
     border: none;
 }
 
@@ -80,6 +82,8 @@ article {
     height: 123px;
     color: white;
     outline: pink;
+    margin: 10px;
+    padding: 5px;
 }
 
 .sun {
@@ -94,4 +98,24 @@ article {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+@media screen and (max-width: 1160px) {
+
+    section {
+        align-items: right;
+        align-content: right;
+    }
+
+    section div {
+        height: 800px;
+        flex-direction: column;
+    }
+
+}
+
+@media screen and (max-width: 1160px) {
+    header h1 {
+        font-size: 50px;
+    }
 }
