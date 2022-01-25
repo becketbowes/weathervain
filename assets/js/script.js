@@ -21,8 +21,7 @@ var whereInTheWorld = function(param) {
             var lat = (data.results[0].geometry.location.lat);
             var lng = (data.results[0].geometry.location.lng);
             var townState = (town + ", " + state);
-            var latLng = (lat + "_" + lng);
-            placeButton(townState, latLng);
+            placeButton(townState, lat, lng);
             howsTheWeather(townState, lat, lng);
         });
 };
@@ -30,7 +29,6 @@ var whereInTheWorld = function(param) {
 //get weather from One Call API
 var howsTheWeather = function(townState, lat, lng) {
     var theAsk = ("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lng + "&units=imperial&appid=6422a136fb63b0c87dbf19f64b526f79");
-    // var theAsk = ("https://api.openweathermap.org/data/2.5/onecall?lat=38.8683204&lon=-107.5920017&units=imperial&appid=6422a136fb63b0c87dbf19f64b526f79");
     fetch(theAsk)
         .then(function (response) {
             return response.json();
@@ -38,14 +36,57 @@ var howsTheWeather = function(townState, lat, lng) {
         .then(function (data) {
         console.log(townState);
         console.log(data);
+        // var nowWeather = (data.current.weather[0].description);
+        // var nowWeatherCode = (data.current.weather[0].icon);
+        // var nowTemp = (data.current.temp);
+        // var nowTempFeels = (data.current.feels_like);
+        // var nowHumidity = (data.current.humidity);
+        // var nowWind = (data.current.wind_speed);
+        // var nowUv = (data.current.uvi);
+        //color code uv index 
+        // console.log(data.daily[0].dt); 
+        // var dt = ((data.daily[0].dt) * 1000);
+        // const dateObject = new Date(dt);
+        // const todayLong = dateObject.toLocaleString()
+        // const tossHours = todayLong.split(',');
+        // const today = tossHours[0];
+        // console.log(today);
+            var fixDate = function(day) {
+                var dt = (day * 1000);
+                const dateObject = new Date(dt);
+                const todayLong = dateObject.toLocaleString()
+                const tossHours = todayLong.split(',');
+                var day = tossHours[0];
+                return day;
+            }
+        var today = fixDate(data.daily[0].dt);
+        console.log(today);
+        // console.log("Today: " + day)
+        // console.log("Today: " + weather);
+        // console.log("Today: " + temp high, temp low, wind-spped and humidity)
+    
+
+        // console.log("Tomorrow: " +);
+        // console.log("The next day: " +);
+        // console.log("The Day After Tomorrow (dun dun): " +);
+        // console.log("Four days from now" +);
+        // console.log("Who are they kidding, pretending to know anything about five days from now?! " +)
     });
 };
 
+// codes for weather:
+// 200 = thunderstorm
+// 300 = drizzle
+// 500 = rain
+// 600 = snow
+// 700 = atmosphere
+// 800 - 804 clear to cloudy spectrum
+
+
 //make buttons out of user requests
-var placeButton = function (townState, latLng) {
+var placeButton = function (townState, lat, lng) {
     var papa = document.getElementById('somewhereFabulous');
     var bueller = document.getElementById('present');
-    console.log(bueller);
     if (bueller === null) {
         var savedHeader = document.createElement("p");
         savedHeader.setAttribute("id", "present")
@@ -54,11 +95,13 @@ var placeButton = function (townState, latLng) {
     };
     var buttonL = document.createElement("button");
     buttonL.setAttribute("class", "place-button");
-    buttonL.setAttribute("info", latLng);
+    buttonL.setAttribute("info", lat, lng);
     buttonL.textContent = townState;
     console.log(townState);
-    console.log(latLng);
     papa.appendChild(buttonL);
+    buttonL.addEventListener('click', function(townState, lat, lng) {
+        howsTheWeather(townState, lat, lng);
+    })
 };
 
 //clear text area
