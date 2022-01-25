@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -18,17 +17,17 @@
         <h1>WeatherVain</h1>
     </header>
     <div class=".container">
-    <nav>
+    <nav id="somewhereFabulous">
         <p>Search for a city below:</p>
         <textarea class="findcity" id="textarea"></textarea>
         <button class="clickme" id="btn">Click to find City</button>
     </nav>
     <section class="sun">
-        <div id="current">
+        <span>
             <h1>The Weather in this City makes you look lovely</h1>
             <p>Its a cold one!</p>
-        </div>
-        <div id="forecast">
+        </span>
+        <div>
             <article class="forecast" id="day1">
                 <p>The Weather tomorrow</p>
             </article>
@@ -48,53 +47,11 @@
     </section>
     <footer></footer>
     </div>
-    <!-- <div class="container col-12 bg-light">
-        <div class="row">
-            <div class="col-2" id="nav">
-                <h3 class="h5 pt-3 pb-3">Search for a City:</h3>
-                <input type="text" class="col-12">
-                <div class="d-grid gap-0">
-                    <button type="button" class="btn btn-info mt-3 mb-3 col-12">Search</button>
-                </div>
-            </div>
-            <div class="col-10" id="weather-report">
-                <div id="main-weather-report">
-                    <h3 iclass="h5 pt-3 pb-3" id="currentcity">Current City:</h3>
-                    <h1 class="h1 mt-6 mb-6 text-center"><em>You look lovely in any weather.</em></h1>
-                </div>
-                <div id="forecast-weather-report" class="container-fluid">
-                    <h3 class="h5 pt-3 pb-3"><em></em>The next 5 days of fabulous you:</em></h3>
-                    <div class="row">
-                        <div id="dayone" class="col card">
-                            <div id="dayonetop" class="card-img-top"></div>
-                            <div id="dayonebottom" class="card-body"><em>you'll look lovely tomorrow</em></div>
-                        </div>
-                        <div id=daytwo class="col card">
-                            <div id="daytwotop" class="card-img-top"></div>
-                            <div id="daytwobottom" class="card-body"><em>and the day after</em></div>
-                        </div>
-                        <div id=daythree class="col card">
-                            <div id="daythreetop" class="card-img-top"></div>
-                            <div id="daythreebottom" class="card-body"><em>and expecially this day</em></div>
-                        </div>
-                        <div id=dayfour class="col card">
-                            <div id="dayfourtop" class="card-img-top"></div>
-                            <div id="dayfourbottom" class="card-body"><em>good hair days ahead</em></div>
-                        </div>
-                        <div id=dayfive class="col card">
-                            <div id="dayfivetop" class="card-img-top"></div>
-                            <div id="dayfivebottom" class="card-body"><em>aging like fine wine</em></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div> -->
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
+
 </body>
 
 </html>
