@@ -3,7 +3,7 @@
 }
 
 body{
-    font-family: "Ubuntu Mono", sans-serif;
+    font-family: "Ubuntu Mono Medium", sans-serif;
 }
 
 header {
@@ -58,7 +58,7 @@ nav textarea {
 nav button {
     margin-top: 15px;
     margin-bottom: 30px;
-    font-family: "Ubuntu Mono", sans-serif, bold;
+    font-family: "Ubuntu Mono", monospace, bold;
     width: 100%;
     height: 50px;
     border: none;
@@ -72,8 +72,7 @@ nav button {
 
 section {
     font-family: var(--txt);
-    padding-top: 20px;
-    background-image: url(../img/sunny_coGiphy.gif);
+    background-color: rgb(211, 211, 211);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -85,6 +84,17 @@ section span {
     padding-right: 50px;
     display: flex;
     flex-direction: column;
+}
+
+section span h1 {
+    font-style: bold;
+    font-size: 55px;
+}
+
+section span p {
+    font-size: 25px;
+    font-family: "Ubuntu Mono", monospace, italic;
+    font-style: italic;
 }
 
 section div {

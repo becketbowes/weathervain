@@ -4,8 +4,18 @@ var whereInTheWorld = function (param) {
     fetch(theAsk)
         .then(function (response) {
             return response.json();
+            console.log(data);
         })
         .then(function (data) {
+            if (!data || data.status === 'ZERO_RESULTS') {
+                var goldblum = document.getElementById('main-gif');
+                var what = document.getElementById('headline');
+                var areYouSaying = document.getElementById('lede');
+                goldblum.style.backgroundImage = "url(assets/img/what.gif)";
+                what.textContent = "Babe! I just don't get it!";
+                areYouSaying.textContent = "You're beautful, but you've gotta, you know, well, describe a city in three words or less, okay babe?";
+            }
+            console.log(data);
             var town = (data.results[0].address_components[0].long_name);
             var state = (data.results[0].address_components[2].short_name);
             var lat = (data.results[0].geometry.location.lat);
@@ -36,6 +46,11 @@ var placeButton = function (townState, latLng) {
     papa.appendChild(buttonL);
 };
 
+//clear text area
+var clearText = function() {
+    document.getElementById('textarea').value = "";
+}
+
 //get user request and format it for google geocode service
 document.getElementById("btn").addEventListener("click", function () {
     var placeSearchName = document.getElementById("textarea").value;
@@ -49,6 +64,7 @@ document.getElementById("btn").addEventListener("click", function () {
     } else {
         whereInTheWorld(placeSearchName);
     };
+    clearText();
 });
 
 
