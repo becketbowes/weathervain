@@ -110,7 +110,7 @@ var howsTheWeather = function(townState, lat, lng) {
         var nowWind = (data.current.wind_speed);
         var nowUv = (data.current.uvi);
         var nowWeatherCode = (data.current.weather[0].icon);
-        var weatherHeadline = ("It's " + nowWeather + " in " + townState);
+        var weatherHeadline = ("Right now it's all " + nowWeather + " in " + townState);
         var weatherLede = ("The temp is " + nowTemp + " farenheight, but it definitely feels like " + nowTempFeels + ". The humidity is, like, " + nowHumidity + "%, and the wind is blowing at a mild and/or whopping " + nowWind + "mph. You should definitely moisturize, though anyhow. Not that you need it. Also, babe, just for reference: moderate UV indexes are, like, 3-5. Right now the UV is " + nowUv + ", which in terms of, say, stop lights, feels like this color: ");
 
         // date fixing function
