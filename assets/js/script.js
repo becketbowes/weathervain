@@ -1,21 +1,21 @@
 //get latitude and longitude from user request
-var whereInTheWorld = function (param) {
+var whereInTheWorld = function(param) {
     var theAsk = ("https://maps.googleapis.com/maps/api/geocode/json?address=" + param + "&key=AIzaSyDWtVKZCyc6X5L_eERu0Bk_WpclnefusjU")
     fetch(theAsk)
         .then(function (response) {
             return response.json();
-            console.log(data);
         })
         .then(function (data) {
+            //error function feat. Goldblum
             if (!data || data.status === 'ZERO_RESULTS') {
                 var goldblum = document.getElementById('main-gif');
                 var what = document.getElementById('headline');
                 var areYouSaying = document.getElementById('lede');
                 goldblum.style.backgroundImage = "url(assets/img/what.gif)";
-                what.textContent = "Babe! I just don't get it!";
+                what.textContent = "Well, I just don't get it!";
                 areYouSaying.textContent = "You're beautful, but you've gotta, you know, well, describe a city in three words or less, okay babe?";
             }
-            console.log(data);
+            //format the data, baby
             var town = (data.results[0].address_components[0].long_name);
             var state = (data.results[0].address_components[2].short_name);
             var lat = (data.results[0].geometry.location.lat);
@@ -23,7 +23,22 @@ var whereInTheWorld = function (param) {
             var townState = (town + ", " + state);
             var latLng = (lat + "_" + lng);
             placeButton(townState, latLng);
+            howsTheWeather(townState, lat, lng);
         });
+};
+
+//get weather from One Call API
+var howsTheWeather = function(townState, lat, lng) {
+    var theAsk = ("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lng + "&units=imperial&appid=6422a136fb63b0c87dbf19f64b526f79");
+    // var theAsk = ("https://api.openweathermap.org/data/2.5/onecall?lat=38.8683204&lon=-107.5920017&units=imperial&appid=6422a136fb63b0c87dbf19f64b526f79");
+    fetch(theAsk)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+        console.log(townState);
+        console.log(data);
+    });
 };
 
 //make buttons out of user requests
