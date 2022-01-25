@@ -36,21 +36,19 @@ var howsTheWeather = function(townState, lat, lng) {
         .then(function (data) {
         console.log(townState);
         console.log(data);
-        // var nowWeather = (data.current.weather[0].description);
-        // var nowWeatherCode = (data.current.weather[0].icon);
-        // var nowTemp = (data.current.temp);
-        // var nowTempFeels = (data.current.feels_like);
-        // var nowHumidity = (data.current.humidity);
-        // var nowWind = (data.current.wind_speed);
-        // var nowUv = (data.current.uvi);
-        //color code uv index 
-        // console.log(data.daily[0].dt); 
-        // var dt = ((data.daily[0].dt) * 1000);
-        // const dateObject = new Date(dt);
-        // const todayLong = dateObject.toLocaleString()
-        // const tossHours = todayLong.split(',');
-        // const today = tossHours[0];
-        // console.log(today);
+
+        //current weather report
+        var nowWeather = (data.current.weather[0].description);
+        var nowTemp = (data.current.temp);
+        var nowTempFeels = (data.current.feels_like);
+        var nowHumidity = (data.current.humidity);
+        var nowWind = (data.current.wind_speed);
+        var nowUv = (data.current.uvi);
+        var nowWeatherCode = (data.current.weather[0].icon);
+        var weatherHeadline = ("It's " + nowWeather + " in " + townState);
+        var weatherLede = ("The temp is " + nowTemp + " farenheight, but it definitely feels like " + nowTempFeels + ". The humidity is only " + nowHumidity + ", and the wind is blowing at a mild " + nowWind + ". You should definitely moisturize. Not that you need it. Also, the UV is " + nowUv + ", which feels like this color: ");
+
+        // date fixing function
             var fixDate = function(day) {
                 var dt = (day * 1000);
                 const dateObject = new Date(dt);
@@ -58,19 +56,81 @@ var howsTheWeather = function(townState, lat, lng) {
                 const tossHours = todayLong.split(',');
                 var day = tossHours[0];
                 return day;
-            }
-        var today = fixDate(data.daily[0].dt);
-        console.log(today);
-        // console.log("Today: " + day)
-        // console.log("Today: " + weather);
-        // console.log("Today: " + temp high, temp low, wind-spped and humidity)
-    
+            };
 
-        // console.log("Tomorrow: " +);
-        // console.log("The next day: " +);
-        // console.log("The Day After Tomorrow (dun dun): " +);
-        // console.log("Four days from now" +);
-        // console.log("Who are they kidding, pretending to know anything about five days from now?! " +)
+        //Today's Weather report    
+        var today = fixDate(data.daily[0].dt);
+        var todayHigh = (data.daily[0].temp.max);
+        var todayLow = (data.daily[0].temp.min);
+        var todayWind = (data.daily[0].wind_speed);
+        var todayHumid = (data.daily[0].humidity);
+        var todayWeather = (data.daily[0].weather[0].main);
+        var todayReport = (today + "<br/>" + todayWeather + " today, with a high of " + todayHigh + ", and a low of " + todayLow + ". The wind will be around " + todayWind + "mph, and humidity will be around " + todayHumid + "%. But we all know you'll bring your own weather anyway;)") 
+        var todayIcon = (data.daily[0].weather[0].icon);
+
+        //5 day forecast
+        //dayplusone    
+        var dayOne = fixDate(data.daily[1].dt);
+        var dayOneHigh = (data.daily[1].temp.max);
+        var dayOneLow = (data.daily[1].temp.min);
+        var dayOneWind = (data.daily[1].wind_speed);
+        var dayOneHumid = (data.daily[1].humidity);
+        var dayOneWeather = (data.daily[1].weather[0].main);
+        var dayOneReport = (dayOne + "<br/>" + dayOneWeather + " today, with a high of " + dayOneHigh + ", and a low of " + dayOneLow + ". The wind will be around " + dayOneWind + "mph, and humidity will be around " + dayOneHumid + "%. But we all know you'll bring your own weather anyway;)") 
+        var dayOneIcon = (data.daily[1].weather[0].icon);
+        
+        //dayplustwo    
+        var dayTwo = fixDate(data.daily[2].dt);
+        var dayTwoHigh = (data.daily[2].temp.max);
+        var dayTwoLow = (data.daily[2].temp.min);
+        var dayTwoWind = (data.daily[2].wind_speed);
+        var dayTwoHumid = (data.daily[2].humidity);
+        var dayTwoWeather = (data.daily[2].weather[0].main);
+        var dayTwoReport = (dayTwo + "<br/>" + dayTwoWeather + " today, with a high of " + dayTwoHigh + ", and a low of " + dayTwoLow + ". The wind will be around " + dayTwoWind + "mph, and humidity will be around " + dayTwoHumid + "%. But we all know you'll bring your own weather anyway;)") 
+        var dayTwoIcon = (data.daily[2].weather[0].icon);
+
+        //dayplusthree    
+        var dayThree = fixDate(data.daily[3].dt);
+        var dayThreeHigh = (data.daily[3].temp.max);
+        var dayThreeLow = (data.daily[3].temp.min);
+        var dayThreeWind = (data.daily[3].wind_speed);
+        var dayThreeHumid = (data.daily[3].humidity);
+        var dayThreeWeather = (data.daily[3].weather[0].main);
+        var dayThreeReport = (dayThree + "<br/>" + dayThreeWeather + " today, with a high of " + dayThreeHigh + ", and a low of " + dayThreeLow + ". The wind will be around " + dayThreeWind + "mph, and humidity will be around " + dayThreeHumid + "%. But we all know you'll bring your own weather anyway;)") 
+        var dayThreeIcon = (data.daily[3].weather[0].icon);
+
+        //dayplusfour    
+        var dayFour = fixDate(data.daily[4].dt);
+        var dayFourHigh = (data.daily[4].temp.max);
+        var dayFourLow = (data.daily[4].temp.min);
+        var dayFourWind = (data.daily[4].wind_speed);
+        var dayFourHumid = (data.daily[4].humidity);
+        var dayFourWeather = (data.daily[4].weather[0].main);
+        var dayFourReport = (dayFour + "<br/>" + dayFourWeather + " today, with a high of " + dayFourHigh + ", and a low of " + dayFourLow + ". The wind will be around " + dayFourWind + "mph, and humidity will be around " + dayFourHumid + "%. But we all know you'll bring your own weather anyway;)") 
+        var dayFourIcon = (data.daily[4].weather[0].icon);
+
+        //dayplusfive
+        var dayFive = fixDate(data.daily[5].dt);
+        var dayFiveHigh = (data.daily[5].temp.max);
+        var dayFiveLow = (data.daily[5].temp.min);
+        var dayFiveWind = (data.daily[5].wind_speed);
+        var dayFiveHumid = (data.daily[5].humidity);
+        var dayFiveWeather = (data.daily[5].weather[0].main);
+        var dayFiveReport = (dayFive + "<br/>" + dayFiveWeather + " today, with a high of " + dayFiveHigh + ", and a low of " + dayFiveLow + ". The wind will be around " + dayFiveWind + "mph, and humidity will be around " + dayFiveHumid + "%. But we all know you'll bring your own weather anyway;)") 
+        var dayFiveIcon = (data.daily[5].weather[0].icon);
+
+        //console.log the values to return:
+        console.log(todayReport, todayIcon);
+        console.log(dayOneReport, dayOneIcon);
+        console.log(dayTwoReport, dayTwoIcon);
+        console.log(dayThreeReport, dayThreeIcon);
+        console.log(dayFourReport, dayFourIcon);
+        console.log(dayFiveReport, dayFiveIcon);
+        console.log(weatherHeadline);
+        console.log(weatherLede);
+        console.log(nowWeatherCode);
+        // color code uv index 
+        console.log(nowUv);
     });
 };
 
