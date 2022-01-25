@@ -125,8 +125,7 @@ article {
 }
 
 .hide {
-    border-color: rgb(211, 211, 211);
-    background-color: rgb(211, 211, 211);
+    opacity: 0;
 }
 
 
