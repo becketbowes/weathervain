@@ -88,14 +88,37 @@ section span {
 }
 
 section span h1 {
+    max-width: 800px;
     font-style: bold;
-    font-size: 55px;
+    font-size: 50px;
 }
 
 section span p {
+    max-width: 800px;
     font-size: 25px;
     font-family: "Ubuntu Mono", monospace, italic;
     font-style: italic;
+}
+
+section span article {
+    margin-top: 10px;
+    max-width: 360px;
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 5px grey;
+    padding: 20px;
+}
+
+section span article h3 {
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+section span article p {
+    font-size: 16px;
+}
+
+#report-day {
+    margin-top: 50px;
 }
 
 section div {
@@ -107,7 +130,7 @@ section div {
     justify-content: space-evenly;
 }
 
-article {
+section div article {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
