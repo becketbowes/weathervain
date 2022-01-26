@@ -7,7 +7,7 @@ var whereInTheWorld = function(param) {
         })
         .then(function (data) {
             //error function feat. Goldblum
-            if (!data || data.status === 'ZERO_RESULTS') {
+            if (!data || data.error_message) {
                 var goldblum = document.getElementById('main-gif');
                 var what = document.getElementById('headline');
                 var areYouSaying = document.getElementById('lede');
@@ -180,7 +180,7 @@ var foreCast = function(todayReport, today, dayOneReport, dayOneIcon, dayOne, da
     threeDay.textContent = ("Three days on: " + dayThree);
     fourDay.textContent = ("Four days out: " + dayFour);
     fiveDay.textContent = ("Five days hence: " + dayFive);
-    //function to restore the general page after 1 min
+    //function to restore the general page info after 1 min
     var restore = function() {
         setTimeout (function() {
             date.textContent = today;
@@ -258,13 +258,13 @@ document.getElementById("btn").addEventListener("click", function () {
     clearText();
 });
 
-//credits:
-//all Gifs from Giphy
-//WVheader: Igmarcade
-//what: JeffGoldblum
-//01d: MastersOfThe80s
-//01n: TheBlackPearl
-//02d: DreamerInTheDress
+// credits:
+// all Gifs from Giphy
+// WVheader: Igmarcade
+// what: JeffGoldblum
+// 01d: MastersOfThe80s
+// 01n: TheBlackPearl
+// 02d: DreamerInTheDress
 // 02n: iPowder
 // 03d: Konczakowski
 // 03n: Konczakowski

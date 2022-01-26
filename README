@@ -1,1 +1,38 @@
 ***WEATHERVAIN-1.0***
+
+https://becketbowes.github.io/weathervain/
+
+# I Bet You Think This App Is About You #
+
+
+![weatherVane homepage desktop](./assets/img/readmeimg/weatherVainDesktop.jpg)
+
+
+
+## Babe, this weather looks great on you ##
+
+WeatherVain is a sassy-ass mobile-friendly web app to find the weather conditions in any city in an atmosphere that hearkens to imaginary halycon days of early-ought cat memes and too many gifs. It serves up the weather forecast and a little ego boost to wash it down with.
+
+
+![weatherVane homepage mobile](./assets/img/readmeimg/weatherVainMobileHome1.jpg)
+
+
+## Tech Stuff ##
+
+WeatherVain uses, HTML, CSS, and JavaScript, as it's architecture, pulls resources from GIPHY, GoogleFonts, and utilizes Google Geocode and OpenWeather One Call APIs. When a user enters a request for that city, the information is parsed into a request to the Google Geocode API, which returns the proper name, latitude and longitude for that location. That infomation is then used to request a package of weather information for that location from the OpenWeather api. Once the program has the weather information, it formats it into presentable information for the user in the form of headlines, paragraphs, reactive elements (eg. a color-coded UV index element). It also uses background gifs that have been renamed to match the usual icons that Open Weather provides. Searches are saved as buttons on the side for easy reference to favorite locations. Also, if there is an error in the request, a helpfully confused Jeff Goldblum apologizes for then inconvenience and suggests that the user try again:
+
+
+![Goldblum error screen](./assets/img/readmeimg/weatherVainErrorMessage.jpg)
+
+
+Credits for gifs are acknowledged in the header of the HTML:
+
+
+![credits](./assets/img/readmeimg/weatherVainScreenCredit.jpg)
+
+
+
+## Licence ##
+
+This website protected by the creative commons Attribution 4.0 licence, which means you can appropriate whatever you'd like, but please give credit when using recognizable work.
+https://creativecommons.org/licenses/by/4.0/legalcode 
