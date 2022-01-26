@@ -46,7 +46,7 @@ var howsTheWeather = function(townState, lat, lng) {
         var nowUv = (data.current.uvi);
         var nowWeatherCode = (data.current.weather[0].icon);
         var weatherHeadline = ("Right now it's all " + nowWeather + " in " + townState);
-        var weatherLede = ("The temp is " + nowTemp + " farenheit, but it definitely feels like " + nowTempFeels + ". The humidity is, like, " + nowHumidity + "%, and the wind is blowing at a mild and/or whopping " + nowWind + "mph. You should definitely moisturize, though anyhow. Not that you need it. Also, babe, just for reference: moderate UV indexes are, like, 3-5. Right now the UV is " + nowUv + ", which in terms of, say, stop lights, feels like this color: ");
+        var weatherLede = ("The temp is " + nowTemp + " farenheit, but it definitely feels like " + nowTempFeels + ". The humidity is, like, " + nowHumidity + "%, and the wind is blowing at a mild and/or whopping " + nowWind + "mph. You should definitely moisturize anyhow. Not that you need it. Also, babe, just for reference: moderate UV indexes are, like, 3-5. Right now the UV is " + nowUv + ", which in terms of, say, stop lights, feels like this color: ");
 
         // date fixing function
             var fixDate = function(day) {
@@ -106,7 +106,7 @@ var howsTheWeather = function(townState, lat, lng) {
         var dayFourWind = (data.daily[4].wind_speed);
         var dayFourHumid = (data.daily[4].humidity);
         var dayFourWeather = (data.daily[4].weather[0].main);
-        var dayFourReport = (" Four days from now, we've got a high of " + dayFourHigh + ", and a low of " + dayFourLow + ". " + dayFourWeather + ", generally. The wind will be around " + dayFourWind + "mph, and humidity will be around " + dayFourHumid + "%. So, is the question which hat or what hair!?"); 
+        var dayFourReport = ("Four days from now, we've got a high of " + dayFourHigh + ", and a low of " + dayFourLow + ". " + dayFourWeather + ", generally. The wind will be around " + dayFourWind + "mph, and humidity will be around " + dayFourHumid + "%. So, is the question which hat or what hair!?"); 
         var dayFourIcon = (data.daily[4].weather[0].icon);
 
         //dayplusfive
@@ -119,15 +119,8 @@ var howsTheWeather = function(townState, lat, lng) {
         var dayFiveReport = (dayFiveWeather + " they say, five days from now, with a high of " + dayFiveHigh + ", and a low of " + dayFiveLow + ". The wind will be around " + dayFiveWind + "mph, and humidity will be around " + dayFiveHumid + "%. Nobody really knows what the weather is like five days out, but don't worry, babe, you make your own weather anyway;)"); 
         var dayFiveIcon = (data.daily[5].weather[0].icon);
 
-        //console.log the values to return:
-        console.log(dayOneReport, dayOneIcon);
-        console.log(dayTwoReport, dayTwoIcon);
-        console.log(dayThreeReport, dayThreeIcon);
-        console.log(dayFourReport, dayFourIcon);
-        console.log(dayFiveReport, dayFiveIcon);
-
         nowCast(weatherHeadline, weatherLede, today, todayReport, nowWeatherCode, nowUv);
-        foreCast(todayReport, today, dayOneReport, dayOneIcon, dayOne, dayTwoReport, dayTwoIcon, dayTwo, dayThreeReport, dayThreeIcon, dayThree, dayFourReport, dayFourIcon, dayFour,dayFiveReport, dayFiveIcon, dayFive);
+        foreCast(todayReport, today, dayOneReport, dayOneIcon, dayOne, dayTwoReport, dayTwoIcon, dayTwo, dayThreeReport, dayThreeIcon, dayThree, dayFourReport, dayFourIcon, dayFour, dayFiveReport, dayFiveIcon, dayFive);
     });
 };
 
@@ -145,6 +138,10 @@ var nowCast = function(weatherHeadline, weatherLede, today, todayReport, nowWeat
         lede.textContent = weatherLede;
         date.textContent = ("Today, " + today);
         report.textContent = todayReport;
+        //make gif url
+        var goldblum = document.getElementById('main-gif');
+        var bgUrl = ("url(assets/img/" + nowWeatherCode + ".gif)");
+        goldblum.style.backgroundImage = bgUrl;
         //color code Uv
         if (nowUv>6) {
             uv.setAttribute("style", "background-color:red");
@@ -157,7 +154,7 @@ var nowCast = function(weatherHeadline, weatherLede, today, todayReport, nowWeat
 }
 
 //diplay 5 day forecast
-var foreCast = function(todayReport, today, dayOneReport, dayOneIcon, dayOne, dayTwoReport, dayTwoIcon, dayTwo, dayThreeReport, dayThreeIcon, dayThree, dayFourReport, dayFourIcon, dayFour,dayFiveReport, dayFiveIcon, dayFive) {
+var foreCast = function(todayReport, today, dayOneReport, dayOneIcon, dayOne, dayTwoReport, dayTwoIcon, dayTwo, dayThreeReport, dayThreeIcon, dayThree, dayFourReport, dayFourIcon, dayFour, dayFiveReport, dayFiveIcon, dayFive) {
     var theseDays = document.getElementById("these-days");
     var oneDay = document.getElementById("day1");
     var twoDay = document.getElementById("day2");
@@ -166,6 +163,16 @@ var foreCast = function(todayReport, today, dayOneReport, dayOneIcon, dayOne, da
     var fiveDay = document.getElementById("day5");
     var date = document.getElementById("date");
     var report = document.getElementById("report");
+    var dayOneUrl = ("url(assets/img/" + dayOneIcon + ".gif)");
+    var dayTwoUrl = ("url(assets/img/" + dayTwoIcon + ".gif)");
+    var dayThreeUrl = ("url(assets/img/" + dayThreeIcon + ".gif)");
+    var dayFourUrl = ("url(assets/img/" + dayFourIcon + ".gif)");
+    var dayFiveUrl = ("url(assets/img/" + dayFiveIcon + ".gif)");
+    oneDay.style.backgroundImage = dayOneUrl;
+    twoDay.style.backgroundImage = dayTwoUrl;
+    threeDay.style.backgroundImage = dayThreeUrl;
+    fourDay.style.backgroundImage = dayFourUrl;
+    fiveDay.style.backgroundImage = dayFiveUrl;
     theseDays.classList.remove("hide");
     oneDay.textContent = ("Tomorrow, " + dayOne);
     twoDay.textContent = ("The day after tomorrow: " + dayTwo);
@@ -199,7 +206,7 @@ var foreCast = function(todayReport, today, dayOneReport, dayOneIcon, dayOne, da
         report.textContent = dayFourReport;
         restore();
     });
-    fourDay.addEventListener("click", function() {
+    fiveDay.addEventListener("click", function() {
         date.textContent = dayFive;
         report.textContent = dayFiveReport;
         restore();
@@ -231,7 +238,7 @@ var placeButton = function (townState, lat, lng) {
 //clear text area
 var clearText = function() {
     document.getElementById('textarea').value = "";
-}
+};
 
 //get user request and format it for google geocode service
 document.getElementById("btn").addEventListener("click", function () {
@@ -249,67 +256,25 @@ document.getElementById("btn").addEventListener("click", function () {
     clearText();
 });
 
-// //make weather data variables global
-// var nowWeather = "";
-// var nowTemp = "";
-// var nowTempFeels = "";
-// var nowHumidity = "";
-// var nowWind = "";
-// var nowUv = "";
-// var nowWeatherCode = "";
-// var weatherHeadline = "";
-// var weatherLede = "";
-// //Today's Weather report    
-// var today = "";
-// var todayHigh = "";
-// var todayLow = "";
-// var todayWind = "";
-// var todayHumid = "";
-// var todayWeather = "";
-// var todayReport = "";
-// //5 day forecast
-// //dayplusone    
-// var dayOne = "";
-// var dayOneHigh = "";
-// var dayOneLow = "";
-// var dayOneWind = "";
-// var dayOneHumid = "";
-// var dayOneWeather = "";
-// var dayOneReport = "";
-// var dayOneIcon = "";
-// //dayplustwo    
-// var dayTwo = "";
-// var dayTwoHigh = "";
-// var dayTwoLow = "";
-// var dayTwoWind = "";
-// var dayTwoHumid = "";
-// var dayTwoWeather = "";
-// var dayTwoReport = "";
-// var dayTwoIcon = "";
-// //dayplusthree    
-// var dayThree = "";
-// var dayThreeHigh = "";
-// var dayThreeLow = "";
-// var dayThreeWind = "";
-// var dayThreeHumid = "";
-// var dayThreeWeather = "";
-// var dayThreeReport = "";
-// var dayThreeIcon = "";
-// //dayplusfour    
-// var dayFour = "";
-// var dayFourHigh = "";
-// var dayFourLow = "";
-// var dayFourWind = "";
-// var dayFourHumid = "";
-// var dayFourWeather = "";
-// var dayFourReport = "";
-// var dayFourIcon = "";
-// //dayplusfive
-// var dayFive = "";
-// var dayFiveHigh = "";
-// var dayFiveLow = "";
-// var dayFiveWind = "";
-// var dayFiveHumid = "";
-// var dayFiveWeather = "";
-// var dayFiveReport = "";
-// var dayFiveIcon = "";
+//credits:
+//all Gifs from Giphy
+//WVheader: Igmarcade
+//what: JeffGoldblum
+//01d: MastersOfThe80s
+//01n: TheBlackPearl
+//02d: DreamerInTheDress
+// 02n: iPowder
+// 03d: Konczakowski
+// 03n: Konczakowski
+// 04d: Javif
+// 04n: JaimeMartinez
+// 09d: AlRoker
+// 09n: Niccab
+// 10d: Freshcake
+// 10n: Pink
+// 11d: HeadLikeAnOrange
+// 11n: DaveStrick
+// 13d: Anon
+// 13n: SnowHeartsAndMagic
+// 50d: Angophora
+// 50n: DPAnimationMaker

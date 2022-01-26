@@ -72,7 +72,7 @@ nav button {
 
 section {
     font-family: var(--txt);
-    background-color: rgb(211, 211, 211);
+    background-image: linear-gradient(to right, grey, white);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
