@@ -29,6 +29,7 @@ var whereInTheWorld = function(param) {
 //get weather from One Call API
 var howsTheWeather = function(townState, lat, lng) {
     var theAsk = ("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lng + "&units=imperial&appid=6422a136fb63b0c87dbf19f64b526f79");
+    console.log(theAsk);
     fetch(theAsk)
         .then(function (response) {
             return response.json();
@@ -225,14 +226,15 @@ var placeButton = function (townState, lat, lng) {
         papa.appendChild(savedHeader);
     };
     var buttonL = document.createElement("button");
+    buttonL.setAttribute("id", townState);
     buttonL.setAttribute("class", "place-button");
     buttonL.setAttribute("info", lat, lng);
     buttonL.textContent = townState;
-    console.log(townState);
     papa.appendChild(buttonL);
-    buttonL.addEventListener('click', function(townState, lat, lng) {
+    var buttonLId = document.getElementById(townState);
+    buttonLId.addEventListener('click', function() {
         howsTheWeather(townState, lat, lng);
-    })
+    });
 };
 
 //clear text area
