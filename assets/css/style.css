@@ -7,6 +7,7 @@ body{
 }
 
 header {
+    width: 100%;
     height: 120px;
     opacity: 0.6;
     background-image: url(../img/WVheader.gif);
@@ -25,12 +26,13 @@ header h1 {
     font-size: 63px;
 }
 
-div {
-    margin: 10px;
+body div {
     font-family: var(--txt);
+    margin: 10px;
+    width: 100%;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap
+    flex-wrap: wrap;
 }   
 
 nav {
@@ -156,15 +158,52 @@ section div article {
     border-color: white;
 }
 
+section span article {
+    width: auto;
+    max-width: none;
+    min-width: 0;
+    margin-top: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 5px grey;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
 .hide {
     opacity: 0;
 }
 
 @media screen and (max-width: 1320px) {
+    body div {
+        margin: 2px;
+        width: 100%;
+    }   
+
+    nav {
+        width: 100%;
+        flex-grow: 10;
+        padding-top: 20px;
+        padding-left: 0px;
+        padding-right: 0px;
+        display:flex
+    }
 
     section {
         align-items: right;
         align-content: right;
+    }
+
+    section span {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    section span article {
+        width: 230px;
+        max-width: none;
+        min-width: none;
     }
 
     section div {
