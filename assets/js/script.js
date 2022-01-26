@@ -180,12 +180,12 @@ var foreCast = function(todayReport, today, dayOneReport, dayOneIcon, dayOne, da
     threeDay.textContent = ("Three days on: " + dayThree);
     fourDay.textContent = ("Four days out: " + dayFour);
     fiveDay.textContent = ("Five days hence: " + dayFive);
-    //function to restore the general page after 20secs
+    //function to restore the general page after 1 min
     var restore = function() {
         setTimeout (function() {
             date.textContent = today;
             report.textContent = todayReport;
-        }, 40000);
+        }, 60000);
     };
     oneDay.addEventListener("click", function() {
         date.textContent = dayOne;
